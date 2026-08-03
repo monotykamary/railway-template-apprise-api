@@ -1,5 +1,7 @@
 # Apprise API on Railway
 
+[![Deploy on Railway](https://railway.com/button.svg)](https://railway.com/deploy/apprise-api-secure?referralCode=ZqgrJ0)
+
 Deploy Apprise API 1.5.1 as a password-protected notification gateway with persistent configurations, attachments, plugins, and storage cache.
 
 The Deploy on Railway button is added after the published route is verified.
