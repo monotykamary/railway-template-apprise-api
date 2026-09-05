@@ -1,4 +1,4 @@
-FROM docker.io/caronc/apprise:v1.5.2@sha256:feb3ad42d280bca0c58fdff6f77f46e2586a65bbc6d2bff614d31245ff8a399c
+FROM docker.io/caronc/apprise:v1.5.4@sha256:c5ea17408c10fd84c8fdb05a421114a1a677b16343c274bf9b1a55701b530829
 COPY entrypoint.sh /usr/local/bin/apprise-railway-entrypoint
 RUN chmod +x /usr/local/bin/apprise-railway-entrypoint
 EXPOSE 8000
