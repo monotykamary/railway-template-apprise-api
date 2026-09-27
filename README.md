@@ -8,7 +8,7 @@ The Deploy on Railway button is added after the published route is verified.
 
 ## What this deploys
 
-- Official Apprise API `v1.5.4`, pinned to its Linux/AMD64 image digest
+- Official Apprise API `v2.0.0`, pinned to its Linux/AMD64 image digest
 - Nginx Basic Auth with a generated password
 - Simple stateful mode and one worker
 - One daily-backed-up volume for `/config`, `/attach`, and `/plugin`
@@ -33,8 +33,8 @@ BASE_URL=https://your-domain.example AUTH_USER=apprise AUTH_PASSWORD=... python3
 
 ## Upstream
 
-- Source: https://github.com/caronc/apprise-api/tree/v1.5.4
-- Release: https://github.com/caronc/apprise-api/releases/tag/v1.5.4
+- Source: https://github.com/caronc/apprise-api/tree/v2.0.0
+- Release: https://github.com/caronc/apprise-api/releases/tag/v2.0.0
 - License: MIT
 
 This repository contains Railway adapters and documentation. Apprise API remains copyright Chris Caron and contributors and is not affiliated with Railway.
