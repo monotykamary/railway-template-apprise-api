@@ -36,14 +36,14 @@ class Sink(BaseHTTPRequestHandler):
 if phase=='boot':
  key='railway-'+uuid.uuid4().hex
  route=socket.socket(socket.AF_INET,socket.SOCK_DGRAM);route.connect(('1.1.1.1',53));host=route.getsockname()[0];route.close()
- sink=HTTPServer(('0.0.0.0',0),Sink)
- target='json://'+host+':'+str(sink.server_port)+'?tag=railway-check'
+ sink=HTTPServer(('0.0.0.0',int(os.environ.get('CALLBACK_PORT','0'))),Sink)
+ target=os.environ.get('CALLBACK_PUBLIC_URL') or ('json://'+host+':'+str(sink.server_port))
  body=urllib.parse.urlencode({'urls':target}).encode()
  good(req('/add/'+key,method='POST',data=body,auth=auth,headers={'Content-Type':'application/x-www-form-urlencoded'}),(200,201))
  state.write_text(json.dumps({'key':key,'target':target,'port':sink.server_port}))
 saved=json.loads(state.read_text())
 config=good(req('/get/'+saved['key'],method='POST',data=b'',auth=auth))
-assert str(saved['port']) in config and 'railway-check' in config, 'stored notification configuration missing'
+assert urllib.parse.urlsplit(saved['target']).hostname in config, 'stored notification configuration missing'
 if phase!='boot':sink=HTTPServer(('0.0.0.0',saved['port']),Sink)
 thread=threading.Thread(target=sink.serve_forever,daemon=True);thread.start()
 try:
