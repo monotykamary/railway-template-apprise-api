@@ -1,0 +1,7 @@
+FROM python:3.13.5-slim-bookworm@sha256:a7cb177dc60dfa77b223192cd0d9e6ce1aac7cf9a569023d68e7c91b6371a718
+WORKDIR /receiver
+COPY receiver.py ./receiver.py
+USER 65532:65532
+ENV PYTHONDONTWRITEBYTECODE=1 PYTHONUNBUFFERED=1 PORT=8000
+EXPOSE 8000
+CMD ["python", "receiver.py"]
